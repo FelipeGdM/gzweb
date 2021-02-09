@@ -62,40 +62,6 @@ GetOpts $*
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
-# Install node modules
-npm install
-
-# Assemble javascript files
-$DIR/node_modules/.bin/grunt build
-
-# build the c++ server component
-rm -rf build
-mkdir build
-cd build
-
-# Run cmake and check for the exit code
-cmake ..
-
-RETVAL=$?
-if [ $RETVAL -ne 0 ]; then
-  echo There are cmake errors, exiting.
-  exit 1
-fi
-
-# continue building if cmake is happy
-make -j 8
-
-cd ../gzbridge
-$DIR/node_modules/.bin/node-gyp rebuild -d
-
-RETVAL=$?
-if [ $RETVAL -ne 0 ]; then
-  echo There are node-gyp build errors, exiting.
-  exit 1
-fi
-
-cd $DIR
-
 # build a local model database
 if [[ $MODELS ]]
 then

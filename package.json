@@ -1,6 +1,7 @@
 {
   "name": "gzweb",
-  "version": "1.4.0",
+  "version": "2.0.0",
+  "license": "Apache-2.0",
   "description": "WebGL client for Gazebo",
   "repository": {
     "type": "git",
@@ -15,15 +16,16 @@
     "update": "./node_modules/.bin/grunt build && cd build && cmake ..",
     "update-dev": "./node_modules/.bin/grunt concat && cd build && cmake ..",
     "start": "if [ $npm_config_port ]; then port=$npm_config_port; fi; cd gzbridge && ./server.js $port",
+    "install": "cmake-js compile",
     "deploy": "./deploy.sh",
     "docs": "./node_modules/.bin/grunt doc",
     "coverage": "codecov"
   },
   "dependencies": {
+    "cmake-js": "^6.1.0",
     "fs": "0.0.1-security",
     "http": "0.0.0",
     "nan": "^2.14.2",
-    "node-gyp": "6.1.0",
     "path": "^0.12.7",
     "websocket": "^1.0.25"
   },
