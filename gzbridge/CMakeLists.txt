@@ -9,6 +9,8 @@ pkg_check_modules(jansson REQUIRED jansson)
 include_directories(${GAZEBO_INCLUDE_DIRS})
 link_directories(${GAZEBO_LIBRARY_DIRS})
 list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
+list(APPEND CMAKE_LD_FLAGS "${GAZEBO_LD_FLAGS}")
+list(APPEND CMAKE_LALA_FLAGS "${GAZEBO_LALA_FLAGS}")
 
 set (sources
   GZNode.cc
