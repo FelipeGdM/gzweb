@@ -24,7 +24,7 @@
   "dependencies": {
     "cmake-js": "^6.1.0",
     "fs": "0.0.1-security",
-    "gzbridge": "^0.1.0",
+    "gzbridge": "^1.0.1",
     "http": "0.0.0",
     "nan": "^2.14.2",
     "path": "^0.12.7",
