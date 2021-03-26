@@ -21,3 +21,6 @@ coverage
 doc
 npm-debug.log
 test_results
+
+!http/client/index.html
+!http/client/favicon.ico
