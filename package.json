@@ -22,7 +22,6 @@
     "coverage": "codecov"
   },
   "dependencies": {
-    "cmake-js": "^6.1.0",
     "fs": "0.0.1-security",
     "gzbridge": "^1.0.1",
     "http": "0.0.0",
