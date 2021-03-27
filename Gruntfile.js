@@ -99,6 +99,24 @@ module.exports = function (grunt) {
       },
       doc: ['doc']
     },
+    copy: {
+      main: {
+        files: [
+          {
+            expand: true,
+            cwd: 'gz3d',
+            src: ['client/**'],
+            dest: 'http',
+          },
+          {
+            expand: true,
+            flatten: true,
+            src: ['gz3d/build/gz3d.gui.js'],
+            dest: 'http/client',
+          },
+        ]
+      },
+    },
     jsdoc: {
       jsdoc: './node_modules/.bin/jsdoc',
       doc: {
@@ -118,10 +136,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify-es');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-jsdoc');
 
   grunt.registerTask('dev', ['concat', 'watch']);
-  grunt.registerTask('build', ['concat', 'jshint', 'uglify']);
+  grunt.registerTask('build', ['concat', 'jshint', 'uglify', 'copy']);
   grunt.registerTask('build_and_watch', ['watch']);
   grunt.registerTask('doc', ['clean', 'jsdoc']);
 };
