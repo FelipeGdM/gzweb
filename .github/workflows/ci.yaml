@@ -28,6 +28,7 @@ jobs:
     - run: sudo chmod 755 /usr/bin/google-chrome
     - run: defaults write com.google.chrome HardwareAccelerationModeEnabled -integer 1
     - run: sudo npm install -g grunt
+    - run: npm install
     - run: npm run deploy --verbose
     - run: npm run test:headless
     # - run: npm run coverage
