@@ -72,7 +72,6 @@ if ("${ImageMagick}" STREQUAL "ImageMagick-NOTFOUND")
   message(FATAL_ERROR "imagemagick not found")
 endif()
 
-add_subdirectory(gz3d)
 add_subdirectory(tools)
 
 ########### Add uninstall target ###############
