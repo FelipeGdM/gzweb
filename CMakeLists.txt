@@ -72,7 +72,7 @@ if ("${ImageMagick}" STREQUAL "ImageMagick-NOTFOUND")
   message(FATAL_ERROR "imagemagick not found")
 endif()
 
-add_subdirectory(tools)
+add_subdirectory(src/gzcoarse)
 
 ########### Add uninstall target ###############
 configure_file(

@@ -1,3 +1,6 @@
+/*jshint es5: false */
+/*jshint esversion: 6 */
+
 module.exports = function (grunt) {
 
   grunt.initConfig({
@@ -5,42 +8,42 @@ module.exports = function (grunt) {
     concat: {
       // All gz*.js files
       build_src: {
-        src: ['gz3d/src/*.js'],
-        dest: 'gz3d/build/gz3d.src.js'
+        src: ['src/gz3d/*.js'],
+        dest: 'build/gz3d/gz3d.src.js'
       },
       // * All src except for GUI-related
       // * All needed dependencies
       build_gz3d: {
-        src: ['gz3d/client/js/include/three.js',
-          'gz3d/client/js/include/three.compat.js',
-          'gz3d/client/js/include/*.js',
-          '!gz3d/client/js/include/three.min.js',
-          '!gz3d/client/js/include/stats.min.js',
-          '!gz3d/client/js/include/roslib.min.js',
-          '!gz3d/client/js/include/jquery-1.9.1.js',
-          '!gz3d/client/js/include/jquery.mobile-1.4.0.min.js',
-          '!gz3d/client/js/include/angular.min.js',
-          '!gz3d/client/js/include/',
-          'gz3d/src/gz*.js',
-          '!gz3d/src/gzgui.js',
-          '!gz3d/src/gzlogplay.js',
-          '!gz3d/src/gzradialmenu.js',
+        src: ['src/client/js/include/three.js',
+          'src/client/js/include/three.compat.js',
+          'src/client/js/include/*.js',
+          '!src/client/js/include/three.min.js',
+          '!src/client/js/include/stats.min.js',
+          '!src/client/js/include/roslib.min.js',
+          '!src/client/js/include/jquery-1.9.1.js',
+          '!src/client/js/include/jquery.mobile-1.4.0.min.js',
+          '!src/client/js/include/angular.min.js',
+          '!src/client/js/include/',
+          'src/gz3d/gz*.js',
+          '!src/gz3d/gzgui.js',
+          '!src/gz3d/gzlogplay.js',
+          '!src/gz3d/gzradialmenu.js',
         ],
-        dest: 'gz3d/build/gz3d.js'
+        dest: 'build/gz3d/gz3d.js'
       },
       // * All src including GUI
       // * All needed dependencies
       build_gui: {
-        src: ['gz3d/client/js/include/three.js',
-          'gz3d/client/js/include/three.compat.js',
-          'gz3d/client/js/include/*.js',
-          '!gz3d/client/js/include/three.min.js',
-          '!gz3d/client/js/include/stats.min.js',
-          '!gz3d/client/js/include/roslib.min.js',
-          '!gz3d/client/js/include/',
-          'gz3d/src/gz*.js',
+        src: ['src/client/js/include/three.js',
+          'src/client/js/include/three.compat.js',
+          'src/client/js/include/*.js',
+          '!src/client/js/include/three.min.js',
+          '!src/client/js/include/stats.min.js',
+          '!src/client/js/include/roslib.min.js',
+          '!src/client/js/include/',
+          'src/gz3d/gz*.js',
         ],
-        dest: 'gz3d/build/gz3d.gui.js'
+        dest: 'build/gz3d/gz3d.gui.js'
       }
     },
     jshint: {
@@ -49,7 +52,7 @@ module.exports = function (grunt) {
       },
       files: [
         'Gruntfile.js',
-        'gz3d/build/gz3d.src.js'
+        'build/gz3d/gz3d.src.js'
       ]
     },
     uglify: {
@@ -57,16 +60,16 @@ module.exports = function (grunt) {
         report: 'min'
       },
       build_src: {
-        src: 'gz3d/build/gz3d.js',
-        dest: 'gz3d/build/gz3d.min.js'
+        src: 'build/gz3d/gz3d.js',
+        dest: 'build/gz3d/gz3d.min.js'
       },
       build_gz3d: {
-        src: 'gz3d/build/gz3d.js',
-        dest: 'gz3d/build/gz3d.min.js'
+        src: 'build/gz3d/gz3d.js',
+        dest: 'build/gz3d/gz3d.min.js'
       },
       build_gui: {
-        src: 'gz3d/build/gz3d.gui.js',
-        dest: 'gz3d/build/gz3d.gui.min.js'
+        src: 'build/gz3d/gz3d.gui.js',
+        dest: 'build/gz3d/gz3d.gui.min.js'
       }
     },
     watch: {
@@ -75,8 +78,8 @@ module.exports = function (grunt) {
           interrupt: true
         },
         files: [
-          'gz3d/src/*.js',
-          'gz3d/src/**/*.js'
+          'src/gz3d/*.js',
+          'src/gz3d/**/*.js'
         ],
         tasks: ['concat']
       },
@@ -87,8 +90,8 @@ module.exports = function (grunt) {
         files: [
           'Gruntfile.js',
           '.jshintrc',
-          'gz3d/src/*.js',
-          'gz3d/src/**/*.js'
+          'src/gz3d/*.js',
+          'src/gz3d/**/*.js'
         ],
         tasks: ['build']
       }
@@ -104,14 +107,14 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: 'gz3d',
+            cwd: 'src',
             src: ['client/**'],
             dest: 'http',
           },
           {
             expand: true,
             flatten: true,
-            src: ['gz3d/build/gz3d.gui.js'],
+            src: ['build/gz3d/gz3d.gui.js'],
             dest: 'http/client',
           },
         ]
@@ -143,8 +146,8 @@ module.exports = function (grunt) {
       jsdoc: './node_modules/.bin/jsdoc',
       doc: {
         src: [
-          'gz3d/src/*.js',
-          'gz3d/src/**/*.js'
+          'src/gz3d/*.js',
+          'src/gz3d/**/*.js'
         ],
         options: {
           destination: 'doc'
