@@ -116,6 +116,28 @@ module.exports = function (grunt) {
           },
         ]
       },
+      local_models: {
+        files: process.env.GAZEBO_MODEL_PATH
+          .split(':')
+          .filter(folder => folder !== '')
+          .map(folder => ({
+            expand: true,
+            cwd: folder,
+            src: '**',
+            dest: 'http/client/assets/models',
+          })),
+      },
+      local_resources: {
+        files: process.env.GAZEBO_RESOURCE_PATH
+          .split(':')
+          .filter(folder => folder !== '')
+          .map(folder => ({
+            expand: true,
+            cwd: folder,
+            src: 'media/**',
+            dest: 'http/client/assets',
+          })),
+      },
     },
     jsdoc: {
       jsdoc: './node_modules/.bin/jsdoc',
