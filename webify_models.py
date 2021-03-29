@@ -12,7 +12,6 @@ from __future__ import print_function
 import os
 import subprocess
 import sys
-import shutil
 
 print("**************************************")
 print("* 'webify_models.py' is deprecated.  *")

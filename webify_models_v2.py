@@ -13,7 +13,6 @@ from __future__ import print_function
 import os
 import subprocess
 import sys
-import shutil
 
 # explicitly set encoding in osx otherwise sometimes sed throws
 # an illegal byte sequence error
