@@ -7,15 +7,17 @@
 # stored in the [model_name]/meshes/ directory alongside the
 # dae files.
 
+from __future__ import print_function
+
 import os
 import subprocess
 import sys
 import shutil
 
-print "**************************************"
-print "* 'webify_models.py' is deprecated.  *"
-print "* Use 'webify_models_v2.py' instead. *"
-print "**************************************"
+print("**************************************")
+print("* 'webify_models.py' is deprecated.  *")
+print("* Use 'webify_models_v2.py' instead. *")
+print("**************************************")
 
 path = sys.argv[1]
 
@@ -46,7 +48,7 @@ for file in files:
                 cmd = ['cp', dest_path, mesh_dest_dir]
             # if format.lower() == 'png':
             #  cmd = ['cp', file, mesh_dest_dir]
-                print cmd
+                print(cmd)
                 subprocess.check_call(cmd)
 
         if format.lower() in ['dae']:
@@ -54,8 +56,8 @@ for file in files:
                        's/\.tiff/\.png/g', "-e", 's/\.tif/\.png/g',
                        "-e", 's/\.jpg/\.png/g', "-e", 's/\.jpeg/\.png/g',
                        "-e", 's/\.gif/\.png/g', file]
-            print sed_cmd
+            print(sed_cmd)
             subprocess.check_call(sed_cmd)
-    except Exception, e:
-        print "error %s" % e
-        raise
+    except Exception as e:
+        print("error %s" % e)
+        raise e
